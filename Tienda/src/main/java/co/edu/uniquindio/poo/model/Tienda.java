@@ -2,6 +2,7 @@ package co.edu.uniquindio.poo.model;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Tienda {
@@ -130,29 +131,31 @@ public class Tienda {
 
     //Imperativa y declarativa
 
-    public Optional <Cliente> buscarCliente1(String documento){
-        Stream <Cliente> stream = listaClientes.stream().filter(cliente ->
-                                    documento.equalsIgnoreCase(cliente.getDocumento())).findFirst().stream();
-
-        return Optional.of((Cliente) stream);
-    }
-
-    public Optional<Factura>buscarFactura1(String codigo){
-        Stream<Factura>stream= listaFacturas.stream().filter(factura ->
-                                codigo.equalsIgnoreCase(factura.codigo())).findFirst().stream();
+    public Optional<Cliente>obtenerCliente(String documento){
+        return listaClientes.stream().filter(c -> c.getDocumento().equals(documento)).findFirst();
 
     }
 
+    public Optional<Factura>obtenerFactura(String codigo){
+       return listaFacturas.stream().filter(factura -> factura.codigo().equals(codigo)).findFirst();
 
+    }
 
+    //1. Obtener los productos con una cantidad disponible mayor igual a 10
+
+    public List<Producto> obtenerMayorezDiez(){
+        List<Producto> productosFiltrado = new ArrayList<>();
+        for (Producto p : listaProductos.values()){
+            if (p.getCantidadDisponible()>=10){
+                productosFiltrado.add(p);
+            }
+        }
+        return  productosFiltrado;
+    }
 
 
 
 }
-
-
-
-
 
 
 
