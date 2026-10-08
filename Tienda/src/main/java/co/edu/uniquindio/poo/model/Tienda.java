@@ -173,11 +173,22 @@ public class Tienda {
 
 
             }
-
-
         }
         return clientes;
     }
+
+    public List<Cliente> obtenerClientesFecha2(){
+        LocalDate fechaConsulta = LocalDate.of(2026,10,7);
+        List<Cliente> clientes = new ArrayList<>();
+        for (Cliente c : listaClientes){
+            if (c.comproEnFecha(fechaConsulta) == true){
+                clientes.add(c);
+            }
+        }
+        return clientes;
+    }
+
+
 
 }
 
