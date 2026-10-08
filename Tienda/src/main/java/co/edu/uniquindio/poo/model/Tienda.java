@@ -152,6 +152,16 @@ public class Tienda {
         }
         return  productosFiltrado;
     }
+    //2. Obtener los codigos de los productos con una cantidad disponible mayor igual a 10 y menor q 50
+    public List<String> obtenerCodigos(){
+        List<String>productosFiltrados = new ArrayList<>();
+        for (Producto p : listaProductos){
+            if (p.getCantidadDisponible()>=10);
+
+            productosFiltrados.add(p.getCodigo());
+        }
+        return  productosFiltrados
+    }
 
 
 
