@@ -163,7 +163,21 @@ public class Tienda {
         return  productosFiltrados;
     }
 
+    //3. Obtener la lista de clientes que hayan comprado el 07/Octubre/2026
+    public List<Cliente> obtenerClientesFecha(){
+        LocalDate fechaConsulta = LocalDate.of(2026,10,7);
+        List<Cliente> clientes = new ArrayList<>();
+        for (Factura f : listaFacturas){
+            if (f.fecha().isEqual(fechaConsulta)){
+                clientes.add(f.cliente());
 
+
+            }
+
+
+        }
+        return clientes;
+    }
 
 }
 
