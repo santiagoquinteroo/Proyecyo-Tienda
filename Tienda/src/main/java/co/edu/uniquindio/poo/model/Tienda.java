@@ -235,6 +235,17 @@ public class Tienda {
         return facturasPedidas;
 
     }
+    // 7. Implementar un método reciba una categoría y retorne todos los productos que pertenezcan a ella
+
+    public List<Producto> obtenerProductosCategoria (Categoria categoria){
+        List<Producto> productosCategoria = new ArrayList<>();
+        for (Producto p : listaProductos.values()){
+            if (p.getCategoria()==categoria){
+                productosCategoria.add(p);
+            }
+        }
+        return productosCategoria;
+    }
 }
 
 
