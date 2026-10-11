@@ -212,7 +212,29 @@ public class Tienda {
         return facturasIphone;
     }
 
+    // 6. Obtener las facturas con cliente que el nombre sea Juan y haya comprado un celular de marca iPhone 16 pro max
+    public List<Factura> obtenerFacturasIphoneJuan(){
+        List<Factura> facturasPedidas = new ArrayList<>();
+        boolean juan = false;
+        boolean iPhone = false;
+        for (Factura f : listaFacturas){
+            String nombre = f.cliente().getNombreCompleto();
+            if (nombre.equalsIgnoreCase("Juan")){
+                juan = true;
+            }
+            for (DetalleFactura d : f.listaDetallesFactura()){
+                Producto producto = d.getProducto();
+                if (producto.getCategoria()==Categoria.CELULARES&&producto.getNombre().equalsIgnoreCase("iPhone 16 Pro Max")){
+                    iPhone = true;
+                }
+            }
+            if (juan&&iPhone){
+                facturasPedidas.add(f);
+            }
+        }
+        return facturasPedidas;
 
+    }
 }
 
 
