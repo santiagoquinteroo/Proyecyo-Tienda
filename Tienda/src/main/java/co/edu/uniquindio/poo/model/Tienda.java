@@ -198,7 +198,19 @@ public class Tienda {
         }
         return facturasR;
     }
-
+    // 5. Obtener las facturas donde se haya comprado un celular de marca iPhone 16 pro max
+    public List<Factura> obtenerFacturasIphone(){
+        List<Factura> facturasIphone = new ArrayList<>();
+        for (Factura f : listaFacturas){
+            for (DetalleFactura d : f.listaDetallesFactura()){
+                Producto producto = d.getProducto();
+                if (producto.getCategoria()==Categoria.CELULARES&&producto.getNombre().equalsIgnoreCase("iPhone 16 Pro Max")){
+                facturasIphone.add(f);
+                }
+            }
+        }
+        return facturasIphone;
+    }
 
 
 }
