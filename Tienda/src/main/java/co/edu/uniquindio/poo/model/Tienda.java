@@ -260,4 +260,21 @@ public class Tienda {
         }
         return productos;
     }
+    // 9. Implementar un método que retorne todos los productos ordenados de menor a mayor según su precio
+    public List<Producto> ordenarProductos(){
+        List<Producto> productosOrdenados = new ArrayList<>(listaProductos.values());
+        for (int i = 0; i < productosOrdenados.size(); i++) {
+            for (int j = 0; j < productosOrdenados.size(); j++) {
+                Producto actual = productosOrdenados.get(j);
+                Producto siguiente = productosOrdenados.get(j+1);
+
+                if (actual.getValor()>siguiente.getValor()){
+                    productosOrdenados.set(j, siguiente);
+                    productosOrdenados.set(j+1, actual);
+                }
+            }
+        }
+        return productosOrdenados;
+    }
 }
+
